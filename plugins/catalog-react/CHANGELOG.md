@@ -1,5 +1,14 @@
 # @backstage/plugin-catalog-react
 
+## 1.9.2-next.4
+
+### Patch Changes
+
+- fd9863c: Grouped all `/alpha` extension data reference exports under `catalogExtensionData`.
+- Updated dependencies
+  - @backstage/frontend-plugin-api@0.4.0-next.4
+  - @backstage/integration-react@1.1.22-next.1
+
 ## 1.9.2-next.3
 
 ### Patch Changes

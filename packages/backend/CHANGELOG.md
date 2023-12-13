@@ -1,5 +1,13 @@
 # example-backend
 
+## 0.2.90-next.4
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/plugin-techdocs-backend@1.9.1-next.4
+  - example-app@0.2.90-next.5
+
 ## 0.2.90-next.3
 
 ### Patch Changes

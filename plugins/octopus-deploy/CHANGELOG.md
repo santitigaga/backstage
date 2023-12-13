@@ -1,5 +1,12 @@
 # @backstage/plugin-octopus-deploy
 
+## 0.2.10-next.4
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/plugin-catalog-react@1.9.2-next.4
+
 ## 0.2.10-next.3
 
 ### Patch Changes

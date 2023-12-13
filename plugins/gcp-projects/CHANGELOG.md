@@ -1,5 +1,11 @@
 # @backstage/plugin-gcp-projects
 
+## 0.3.44-next.4
+
+### Patch Changes
+
+- d2f5662: Fix query parameter for project details page which should point to projectId rather than project name
+
 ## 0.3.44-next.3
 
 ### Patch Changes

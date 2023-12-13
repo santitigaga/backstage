@@ -1,5 +1,16 @@
 # @backstage/plugin-home
 
+## 0.6.0-next.4
+
+### Patch Changes
+
+- 5814122: Updated `/alpha` exports to fit new naming patterns.
+- Updated dependencies
+  - @backstage/plugin-catalog-react@1.9.2-next.4
+  - @backstage/core-compat-api@0.1.0-next.4
+  - @backstage/frontend-plugin-api@0.4.0-next.4
+  - @backstage/plugin-home-react@0.1.6-next.3
+
 ## 0.6.0-next.3
 
 ### Patch Changes

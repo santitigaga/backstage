@@ -1,5 +1,14 @@
 # @backstage/plugin-tech-radar
 
+## 0.6.11-next.5
+
+### Patch Changes
+
+- 5814122: Updated `/alpha` exports to fit new naming patterns.
+- Updated dependencies
+  - @backstage/core-compat-api@0.1.0-next.4
+  - @backstage/frontend-plugin-api@0.4.0-next.4
+
 ## 0.6.11-next.4
 
 ### Patch Changes

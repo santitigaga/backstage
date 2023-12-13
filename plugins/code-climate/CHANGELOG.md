@@ -1,5 +1,12 @@
 # @backstage/plugin-code-climate
 
+## 0.1.28-next.4
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/plugin-catalog-react@1.9.2-next.4
+
 ## 0.1.28-next.3
 
 ### Patch Changes

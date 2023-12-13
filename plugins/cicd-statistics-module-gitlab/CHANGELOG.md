@@ -1,5 +1,12 @@
 # @backstage/plugin-cicd-statistics-module-gitlab
 
+## 0.1.24-next.4
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/plugin-cicd-statistics@0.1.30-next.4
+
 ## 0.1.24-next.3
 
 ### Patch Changes

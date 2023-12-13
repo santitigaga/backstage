@@ -1,5 +1,17 @@
 # @backstage/frontend-app-api
 
+## 0.4.0-next.4
+
+### Patch Changes
+
+- c35036b: A `configLoader` passed to `createApp` now returns an object, to make room for future expansion
+- c36e0b9: Renamed `AppRouteBinder` to `CreateAppRouteBinder`
+- 5cdf2b3: Updated usage of `Extension` and `ExtensionDefinition` as they are now opaque.
+- f9ef632: Updates to match the new `coreExtensionData` structure.
+- f1183b7: Renamed the `component` option of `createComponentExtension` to `loader`.
+- Updated dependencies
+  - @backstage/frontend-plugin-api@0.4.0-next.4
+
 ## 0.4.0-next.3
 
 ### Patch Changes

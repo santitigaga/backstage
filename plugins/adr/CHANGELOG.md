@@ -1,5 +1,16 @@
 # @backstage/plugin-adr
 
+## 0.6.11-next.4
+
+### Patch Changes
+
+- 5814122: Updated `/alpha` exports to fit new naming patterns.
+- Updated dependencies
+  - @backstage/plugin-catalog-react@1.9.2-next.4
+  - @backstage/plugin-search-react@1.7.4-next.4
+  - @backstage/frontend-plugin-api@0.4.0-next.4
+  - @backstage/integration-react@1.1.22-next.1
+
 ## 0.6.11-next.3
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # @backstage/plugin-stack-overflow
 
+## 0.1.23-next.4
+
+### Patch Changes
+
+- 5814122: Updated `/alpha` exports to fit new naming patterns.
+- Updated dependencies
+  - @backstage/plugin-search-react@1.7.4-next.4
+  - @backstage/frontend-plugin-api@0.4.0-next.4
+  - @backstage/plugin-home-react@0.1.6-next.3
+
 ## 0.1.23-next.3
 
 ### Patch Changes

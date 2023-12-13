@@ -1,5 +1,16 @@
 # @backstage/core-compat-api
 
+## 0.1.0-next.4
+
+### Minor Changes
+
+- f63dd72: The `collectLegacyRoutes` has been removed and is replaced by `convertLegacyApp` now being able to convert a `FlatRoutes` element directly.
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/frontend-plugin-api@0.4.0-next.4
+
 ## 0.1.0-next.3
 
 ### Patch Changes

@@ -1,5 +1,16 @@
 # @backstage/frontend-plugin-api
 
+## 0.4.0-next.4
+
+### Minor Changes
+
+- 5cdf2b3: Changed `Extension` and `ExtensionDefinition` to use opaque types.
+- f9ef632: Moved several extension data references from `coreExtensionData` to their respective extension creators.
+
+### Patch Changes
+
+- f1183b7: Renamed the `component` option of `createComponentExtension` to `loader`.
+
 ## 0.4.0-next.3
 
 ### Patch Changes
