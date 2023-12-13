@@ -14,18 +14,104 @@
  * limitations under the License.
  */
 
+import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
+import { Link } from '@backstage/core-components';
+import { RenderResult, render } from '@testing-library/react';
 import { createSpecializedApp } from '@backstage/frontend-app-api';
 import {
   ExtensionDefinition,
+  IconComponent,
+  RouteRef,
   coreExtensionData,
   createExtension,
+  createExtensionInput,
   createExtensionOverrides,
+  createNavItemExtension,
+  useRouteRef,
 } from '@backstage/frontend-plugin-api';
-// eslint-disable-next-line @backstage/no-relative-monorepo-imports
-import { resolveExtensionDefinition } from '../../../frontend-plugin-api/src/wiring/resolveExtensionDefinition';
 import { MockConfigApi } from '@backstage/test-utils';
 import { JsonArray, JsonObject, JsonValue } from '@backstage/types';
-import { RenderResult, render } from '@testing-library/react';
+// eslint-disable-next-line @backstage/no-relative-monorepo-imports
+import { resolveExtensionDefinition } from '../../../frontend-plugin-api/src/wiring/resolveExtensionDefinition';
+// eslint-disable-next-line @backstage/no-relative-monorepo-imports
+import { createSignInPageExtension } from '../../../frontend-plugin-api/src/extensions/createSignInPageExtension';
+// eslint-disable-next-line @backstage/no-relative-monorepo-imports
+import { InternalExtensionDefinition } from '../../../frontend-plugin-api/src/wiring/createExtension';
+
+const TestCoreNavExtension = createExtension({
+  namespace: 'core',
+  name: 'nav',
+  attachTo: { id: 'core/layout', input: 'nav' },
+  inputs: {
+    items: createExtensionInput({
+      target: createNavItemExtension.targetDataRef,
+    }),
+  },
+  output: {
+    element: coreExtensionData.reactElement,
+  },
+  factory({ inputs }) {
+    const NavItem = (props: {
+      routeRef: RouteRef<undefined>;
+      title: string;
+      icon: IconComponent;
+    }) => {
+      const { routeRef, title, icon: Icon } = props;
+      const to = useRouteRef(routeRef)();
+      return (
+        <li>
+          <Link to={to}>
+            <Icon />
+            {title}
+          </Link>
+        </li>
+      );
+    };
+    return {
+      element: (
+        <nav>
+          {inputs.items.map((item, index) => (
+            <NavItem
+              key={index}
+              icon={item.output.target.icon}
+              title={item.output.target.title}
+              routeRef={item.output.target.routeRef}
+            />
+          ))}
+        </nav>
+      ),
+    };
+  },
+});
+
+const TestCoreRouterExtension = createExtension({
+  namespace: 'core',
+  name: 'router',
+  attachTo: { id: 'core', input: 'root' },
+  inputs: {
+    signInPage: createExtensionInput(
+      {
+        component: createSignInPageExtension.componentDataRef,
+      },
+      { singleton: true, optional: true },
+    ),
+    children: createExtensionInput(
+      {
+        element: coreExtensionData.reactElement,
+      },
+      { singleton: true },
+    ),
+  },
+  output: {
+    element: coreExtensionData.reactElement,
+  },
+  factory({ inputs }) {
+    return {
+      element: <MemoryRouter>{inputs.children.output.element}</MemoryRouter>,
+    };
+  },
+});
 
 /** @public */
 export class ExtensionTester {
@@ -35,7 +121,8 @@ export class ExtensionTester {
     options?: { config?: TConfig },
   ): ExtensionTester {
     const tester = new ExtensionTester();
-    const { output, factory, ...rest } = subject;
+    const { output, factory, ...rest } =
+      subject as InternalExtensionDefinition<TConfig>;
     // attaching to core/routes to render as index route
     const extension = createExtension({
       ...rest,
@@ -117,7 +204,11 @@ export class ExtensionTester {
     const app = createSpecializedApp({
       features: [
         createExtensionOverrides({
-          extensions: this.#extensions.map(extension => extension.definition),
+          extensions: [
+            ...this.#extensions.map(extension => extension.definition),
+            TestCoreNavExtension,
+            TestCoreRouterExtension,
+          ],
         }),
       ],
       config: new MockConfigApi(finalConfig),
